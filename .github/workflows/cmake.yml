@@ -68,18 +68,20 @@ jobs:
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: Format
-      working-directory: ${{github.workspace}}/build
-      run: make check-format
+    # - name: Format
+    #   working-directory: ${{github.workspace}}/build
+    #   run: make check-format
       
-    - name: Lint
-      working-directory: ${{github.workspace}}/build
-      run: make check-lint
+    # - name: Lint
+    #   working-directory: ${{github.workspace}}/build
+    #   run: make check-lint
       
-    - name: Tidy
-      working-directory: ${{github.workspace}}/build
-      run: make check-clang-tidy
+    # - name: Tidy
+    #   working-directory: ${{github.workspace}}/build
+    #   run: make check-clang-tidy
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: ASAN_OPTIONS=check_container_overflow=0 make check-tests
+      run: |
+        export ASAN_OPTIONS=check_container_overflow=0
+        make check-tests
