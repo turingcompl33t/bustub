@@ -82,6 +82,4 @@ jobs:
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: |
-        export ASAN_OPTIONS=detect_container_overflow=0
-        make check-tests
+      run: ASAN_OPTIONS=detect_container_overflow=0 make check-tests
