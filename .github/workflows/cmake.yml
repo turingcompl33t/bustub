@@ -34,15 +34,15 @@ jobs:
               format: "/usr/bin/clang-format-8",
               tidy: "/usr/bin/clang-tidy-8"          
             }
-        - {
-            name: "macOS Latest Clang",
-            os: macos-latest,
-            build_type: "Debug",
-            cc: "/usr/bin/clang",
-            cxx: "/usr/bin/clang++",
-            format: "/usr/local/opt/llvm@8/bin/clang-format",
-            tidy: "/usr/local/opt/llvm@8/bin/clang-tidy"
-          }
+          - {
+              name: "macOS Latest Clang",
+              os: macos-latest,
+              build_type: "Debug",
+              cc: "/usr/bin/clang",
+              cxx: "/usr/bin/clang++",
+              format: "/usr/local/opt/llvm@8/bin/clang-format",
+              tidy: "/usr/local/opt/llvm@8/bin/clang-tidy"
+            }
 
     steps:
     - uses: actions/checkout@v2
