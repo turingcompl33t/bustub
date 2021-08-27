@@ -42,12 +42,8 @@ jobs:
       working-directory: ${{github.workspace}}
       run: sudo bash ./build_support/packages.sh -y
 
-    - name: Set alternatives on Ubuntu
-      working-directory: ${{github.workspace}}
-      run: sudo bash ./build_support/alternatives.sh
-
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCLANG_FORMAT_BIN=/usr/bin/clang-format-8
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
