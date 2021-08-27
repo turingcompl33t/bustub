@@ -52,18 +52,13 @@ jobs:
         echo github.event.action: ${{ github.event.action }}
         echo github.event_name: ${{ github.event_name }}
 
-    - name: Install Dependencies (Ubuntu GCC)
-      if: startsWith(matrix.config.os, 'Ubuntu Latest GCC')
-      working-directory: ${{github.workspace}}
-      run: sudo bash ./build_support/packages.sh -y
-
-    - name: Install Dependencies (Ubuntu Clang)
-      if: startsWith(matrix.config.os, 'Ubuntu Latest Clang')
+    - name: Install Dependencies (Ubuntu)
+      if: startsWith(matrix.config.os, 'ubuntu')
       working-directory: ${{github.workspace}}
       run: sudo bash ./build_support/packages.sh -y
 
     - name: Install Dependencies (OSX)
-      if: startsWith(matrix.config.os, 'macOS Latest Clang')
+      if: startsWith(matrix.config.os, 'macos')
       working-directory: ${{github.workspace}}
       run: bash ./build_support/packages.sh -y
 
